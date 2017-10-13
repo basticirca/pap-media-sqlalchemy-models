@@ -1,7 +1,7 @@
 ﻿from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.declarative import declared_attr
-from config import dev
+from database.config import dev
 from datetime import datetime
 
 ##
