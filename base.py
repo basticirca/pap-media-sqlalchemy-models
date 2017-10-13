@@ -32,14 +32,14 @@ class _TableExt(object):
 		''' Sets the objects attributes from python dict.
 			Returns success of operation. '''
 		if not isinstance(d, dict):
-			print "Failure: parameter has to be a dictionary."
+			print("Failure: parameter has to be a dictionary.")
 			return False
 		for key in d:
 			if hasattr(self, key):
 				setattr(self, key, d[key])
 			else:
-				print "Failure:", type(self), " does not have '", key, "' attribute."
-				print " > Skipping dict argument..."
+				print("Failure:", type(self), " does not have '", key, "' attribute.")
+				print(" > Skipping dict argument...")
 		return True
 
 ##

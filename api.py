@@ -41,11 +41,11 @@ class Api(object):
                 self._db.commit()
                 return True
             except exc.SQLAlchemyError as e:
-                print "FAILURE:", e
+                print("FAILURE:", e)
                 self._db.rollback()
                 return False
         else:
-            print "Notification: Session not open, nothing to commit."
+            print("Notification: Session not open, nothing to commit.")
             return False
 
     def is_open(self):
@@ -62,21 +62,21 @@ class Api(object):
         if self.is_open():
             self._db.add(obj)
         else:
-            print "Notification: Session not open, nothing to add."
+            print("Notification: Session not open, nothing to add.")
 
     def insert_all(self, obj_list):
         ''' adds a list of database objects to the current session. '''
         if self.is_open():
             self._db.add_all(obj_list)
         else:
-            print "Notification: Session not open, nothing to add."
+            print("Notification: Session not open, nothing to add.")
 
     def expunge(self, obj):
         ''' removes a database object from the current session. '''
         if self.is_open():
             self._db.expunge(obj)
         else:
-            print "Notification: Session not open, nothing to remove."
+            print("Notification: Session not open, nothing to remove.")
 
     def expunge_all(self, obj_list):
         ''' removes a list of database objects from the current session. '''
@@ -84,7 +84,7 @@ class Api(object):
             for item in obj_list:
                 self._db.expunge(item)
         else:
-            print "Notification: Session not open, nothing to remove."
+            print("Notification: Session not open, nothing to remove.")
 
     def delete(self, obj):
         ''' Helper function to encapsulate delete operations.
