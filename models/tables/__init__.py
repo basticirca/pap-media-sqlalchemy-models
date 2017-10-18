@@ -6,3 +6,4 @@ from database.models.tables.image_file import ImageFile
 from database.models.tables.tag import Tag
 from database.models.tables.sound_file_tag import SoundFileTag
 from database.models.tables.image_file_tag import ImageFileTag
+from database.models.tables.image_directory import ImageDirectory
