@@ -11,7 +11,7 @@ class Preset(TableBase):
 
   id = Column(Integer, primary_key=True)
   
-  name = Column(String(256), nullable=False)
+  name = Column(String(256), nullable=False, unique=True)
   
   json = Column(String(4096), nullable=False)
   
