@@ -15,13 +15,14 @@ engine = create_engine(dev.SQLALCHEMY_DATABASE_DEBUG_URI, echo=dev.SQLALCHEMY_EC
 # to make each derived class dict serializable.
 ##
 
+
 class _TableExt(object):
 	@declared_attr
 	def __tablename__(cls):
 		return cls.__name__.lower()
 
 	def as_dict(self):
-		''' Returns all object properties as dictionary. '''
+		""" Returns all object properties as dictionary. """
 		dict = {c.name: getattr(self, c.name) for c in self.__table__.columns}
 		for key in dict:
 			if isinstance(dict[key], datetime):
@@ -29,8 +30,8 @@ class _TableExt(object):
 		return dict
 
 	def from_dict(self, d):
-		''' Sets the objects attributes from python dict.
-			Returns success of operation. '''
+		""" Sets the objects attributes from python dict.
+			Returns success of operation. """
 		if not isinstance(d, dict):
 			print("Failure: parameter has to be a dictionary.")
 			return False
@@ -46,26 +47,31 @@ class _TableExt(object):
 # Base class for all table objects
 ##
 
+
 TableBase = declarative_base(cls=_TableExt)
 
 ##
 # Functions for creating and dropping the database
 ##
+
+
 def create_database():
-	''' Creates the database from scratch. '''
+	""" Creates the database from scratch. """
 	global TableBase
 	global engine
 	TableBase.metadata.create_all(engine)
 
+
 def drop_database():
-	''' Drops all database contents.
-		ALL DATABASE TABLES/INDEXES AND DATA WILL BE LOST!'''
+	""" Drops all database contents.
+		ALL DATABASE TABLES/INDEXES AND DATA WILL BE LOST!"""
 	global TableBase
 	global engine
 	TableBase.metadata.drop_all(engine)
 
+
 def recreate_database():
-	''' drops database and creates it from scratch. 
-		ALL DATA WILL BE LOST! '''
+	""" drops database and creates it from scratch. 
+		ALL DATA WILL BE LOST! """
 	drop_database()
 	create_database()
