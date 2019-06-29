@@ -66,10 +66,8 @@ class Api(object):
             self._db.expunge(item)
     
     def delete(self, obj):
-        """ Helper function to encapsulate delete operations.
-            Performs automatic commit (see commit()). """
+        """ Helper function to encapsulate delete operations. """
         self._db.delete(obj)
-        self.commit()
     
     def query(self,*args):
         """ universal function for querying the database connection. """
