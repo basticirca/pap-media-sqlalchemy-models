@@ -22,3 +22,8 @@ class Sound(TableBase):
     def __repr__(self):
         return "<Sound uuid=%s>" % (
             str(self.uuid))
+
+    def as_dict(self):
+        result = super().as_dict()
+        result["resource"] = self.resource.as_dict()
+        return result
