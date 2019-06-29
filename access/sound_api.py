@@ -1,6 +1,6 @@
 from database.access.api import Api
 from database import tables
-
+from database.tables.Resource import ResourceType
 
 class SoundApi(Api):
     def __init__(self, bind):
