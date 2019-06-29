@@ -1,11 +1,11 @@
 """Resource model"""
 from database.base import TableBase
-import enum
+from enum import IntEnum
 
 from sqlalchemy import Column, Integer, String, Enum
 
 
-class ResourceType(enum.Enum):
+class ResourceType(IntEnum):
     unknown = 0
     sound = 1
     image = 2
