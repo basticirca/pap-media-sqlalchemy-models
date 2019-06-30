@@ -44,6 +44,8 @@ class Directory(TableBase):
         backref="parents"
     )
 
+    parents = []
+
     resources = relationship("DirectoryResource", back_populates="directory")
 
     def __repr__(self):
