@@ -1,52 +1,9 @@
 """Directory model"""
 from database.base import TableBase
-import database.constants
+from database.tables import associations
 
-from sqlalchemy import Column, String, Table
-from sqlalchemy import ForeignKey
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-
-
-directory_hierarchie = Table(
-    "directory_hierarchie", TableBase.metadata,
-    Column(
-        "parent_uuid",
-        ForeignKey(
-            "directory.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    ),
-    Column(
-        "child_uuid",
-        ForeignKey(
-            "directory.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    )
-)
-
-
-directory_resource = Table(
-    "directory_resource", TableBase.metadata,
-    Column(
-        "directory_uuid",
-        ForeignKey(
-            "directory.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    ),
-    Column(
-        "resource_uuid",
-        ForeignKey(
-            "resource.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    )
-)
 
 
 class Directory(TableBase):
@@ -59,9 +16,9 @@ class Directory(TableBase):
 
     children = relationship(
         "Directory",
-        secondary=directory_hierarchie,
-        primaryjoin=uuid == directory_hierarchie.c.parent_uuid,
-        secondaryjoin=uuid == directory_hierarchie.c.child_uuid,
+        secondary=associations.directory_hierarchie,
+        primaryjoin=(uuid == associations.directory_hierarchie.c.parent_uuid),
+        secondaryjoin=(uuid == associations.directory_hierarchie.c.child_uuid),
         backref="parents"
     )
 
@@ -69,7 +26,7 @@ class Directory(TableBase):
 
     resources = relationship(
         "Resource",
-        secondary=directory_resource,
+        secondary=associations.directory_resource,
         backref="directories"
     )
 
