@@ -23,7 +23,7 @@ class Directory(TableBase):
 
     parent = relationship("Directory", uselist=False)
 
-    resources = relationship("ImageDirectory", back_populates="directory")
+    resources = relationship("DirectoryResource", back_populates="directory")
 
     def __repr__(self):
         return "<Directory uuid=%s name=%s parent_uuid=%s>" % (
