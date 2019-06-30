@@ -16,6 +16,9 @@ class Project(TableBase):
 
     json = Column(Text, nullable=False)
 
+    # definition see tables.tag
+    tags = []
+
     def __repr__(self):
         return "<Project uuid=%s name=%s description=%s json=[size:%s]>" % (
             self.uuid, self.name, self.description, len(self.json))

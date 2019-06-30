@@ -26,6 +26,9 @@ class Preset(TableBase):
 
     json = Column(Text, nullable=False)
 
+    # definition see tables.tag
+    tags = []
+
     def __repr__(self):
         return "<Preset uuid=%s name=%s description=%s type=%s json=[size:%s]>" % (
             self.uuid, self.name, self.description, str(self.type), len(self.json))

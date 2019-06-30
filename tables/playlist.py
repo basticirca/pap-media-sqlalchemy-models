@@ -13,6 +13,9 @@ class Playlist(TableBase):
 
     description = Column(String(512))
 
+    # definition see tables.tag
+    tags = []
+
     def __repr__(self):
         return "<Playlist uuid=%s name=%s description=%s>" % (
             self.uuid, self.name, self.description)

@@ -24,6 +24,9 @@ class Resource(TableBase):
     # relationship defined in tables.directory
     directories = []
 
+    # definition see tables.tag
+    tags = []
+
     def __repr__(self):
         return "<Resource uuid=%s type=%s name=%s>" % (
             self.uuid, str(self.type), self.name)
