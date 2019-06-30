@@ -1,57 +1,8 @@
-""" lookup table definitions for describing relationship associations """
 import database.constants
 from database.base import TableBase
 
 from sqlalchemy import Column, Table
 from sqlalchemy import ForeignKey
-
-###
-# directory
-###
-
-directory_hierarchie = Table(
-    "directory_hierarchie", TableBase.metadata,
-    Column(
-        "parent_uuid",
-        ForeignKey(
-            "directory.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    ),
-    Column(
-        "child_uuid",
-        ForeignKey(
-            "directory.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    )
-)
-
-directory_resource = Table(
-    "directory_resource", TableBase.metadata,
-    Column(
-        "directory_uuid",
-        ForeignKey(
-            "directory.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    ),
-    Column(
-        "resource_uuid",
-        ForeignKey(
-            "resource.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    )
-)
-
-###
-# tag
-###
 
 tag_resource = Table(
     "tag_resource", TableBase.metadata,
@@ -147,54 +98,6 @@ tag_album = Table(
         "album_uuid",
         ForeignKey(
             "album.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    )
-)
-
-###
-# tag
-###
-
-playlist_sound = Table(
-    "playlist_sound", TableBase.metadata,
-    Column(
-        "playlist_uuid",
-        ForeignKey(
-            "playlist.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    ),
-    Column(
-        "sound_uuid",
-        ForeignKey(
-            "sound.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    )
-)
-
-###
-# album
-###
-
-album_image = Table(
-    "album_image", TableBase.metadata,
-    Column(
-        "album_uuid",
-        ForeignKey(
-            "album.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
-        ),
-        primary_key=True
-    ),
-    Column(
-        "image_uuid",
-        ForeignKey(
-            "image.uuid", name="b",
             onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
         ),
         primary_key=True
