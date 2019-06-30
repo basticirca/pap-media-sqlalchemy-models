@@ -5,6 +5,7 @@ from database.tables import associations
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
+
 class Tag(TableBase):
 
     __tablename__ = 'tag'
