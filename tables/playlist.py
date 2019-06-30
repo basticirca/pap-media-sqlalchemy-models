@@ -1,6 +1,9 @@
 """Playlist model"""
 from database.base import TableBase
+from database.tables import associations
+
 from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 
 
 class Playlist(TableBase):
@@ -12,6 +15,8 @@ class Playlist(TableBase):
     name = Column(String(128), nullable=False)
 
     description = Column(String(512))
+
+    sounds = relationship("Sound", secondary=associations.tag_playlist, backref="playlists")
 
     # definition see tables.tag
     tags = []

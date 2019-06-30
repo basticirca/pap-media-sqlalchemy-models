@@ -132,3 +132,27 @@ tag_playlist = Table(
         primary_key=True
     )
 )
+
+###
+# tag
+###
+
+playlist_sound = Table(
+    "playlist_sound", TableBase.metadata,
+    Column(
+        "playlist_uuid",
+        ForeignKey(
+            "playlist.uuid", name="a",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    ),
+    Column(
+        "sound_uuid",
+        ForeignKey(
+            "sound.uuid", name="b",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    )
+)

@@ -19,6 +19,8 @@ class Sound(TableBase):
 
     resource = relationship("Resource", uselist=False)
 
+    playlists = []
+
     def __repr__(self):
         return "<Sound uuid=%s>" % (
             str(self.uuid))
