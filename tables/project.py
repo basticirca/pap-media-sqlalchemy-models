@@ -1,0 +1,21 @@
+"""Project model"""
+from database.base import TableBase
+
+from sqlalchemy import Column, String, Text
+
+
+class Preset(TableBase):
+
+    __tablename__ = 'preset'
+
+    uuid = Column(String(64), primary_key=True)
+
+    name = Column(String(128), nullable=False)
+
+    description = Column(String(512))
+
+    json = Column(Text, nullable=False)
+
+    def __repr__(self):
+        return "<Project uuid=%s name=%s description=%s json=[size:%s]>" % (
+            self.uuid, self.name, self.description, len(self.json))
