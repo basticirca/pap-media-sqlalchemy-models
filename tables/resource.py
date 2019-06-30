@@ -21,6 +21,9 @@ class Resource(TableBase):
 
     type = Column(Enum(ResourceType), default=ResourceType.unknown, nullable=False)
 
+    # relationship defined in tables.directory
+    directories = []
+
     def __repr__(self):
-        return "<SoundFile id=%s uuid=%s type=%s name=%s>" % (
-            str(self.id), self.uuid, str(self.type), self.name)
+        return "<Resource uuid=%s type=%s name=%s>" % (
+            self.uuid, str(self.type), self.name)

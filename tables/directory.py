@@ -28,6 +28,27 @@ directory_hierarchie = Table(
 )
 
 
+directory_resource = Table(
+    "directory_resource", TableBase.metadata,
+    Column(
+        "directory_uuid",
+        ForeignKey(
+            "directory.uuid", name="a",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    ),
+    Column(
+        "resource_uuid",
+        ForeignKey(
+            "resource.uuid", name="b",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    )
+)
+
+
 class Directory(TableBase):
 
     __tablename__ = 'directory'
@@ -46,7 +67,11 @@ class Directory(TableBase):
 
     parents = []
 
-    resources = relationship("DirectoryResource", back_populates="directory")
+    resources = relationship(
+        "Resource",
+        secondary=directory_resource,
+        backref="directories"
+    )
 
     def __repr__(self):
         return "<Directory uuid=%s name=%s>" % (
