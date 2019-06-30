@@ -6,7 +6,7 @@ from sqlalchemy import Column, String, Text
 
 class Preset(TableBase):
 
-    __tablename__ = 'preset'
+    __tablename__ = 'project'
 
     uuid = Column(String(64), primary_key=True)
 
