@@ -4,7 +4,7 @@ from database.base import TableBase
 from sqlalchemy import Column, String, Text
 
 
-class Preset(TableBase):
+class Project(TableBase):
 
     __tablename__ = 'project'
 
