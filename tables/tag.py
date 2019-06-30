@@ -24,6 +24,8 @@ class Tag(TableBase):
 
     playlists = relationship("Playlist", secondary=associations.tag_playlist, backref="tags")
 
+    albums = relationship("Album", secondary=associations.tag_album, backref="tags")
+
     def __repr__(self):
         return "<Tag uuid=%s name=%s description=%s>" % (
             self.uuid, self.name, self.description)

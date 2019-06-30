@@ -19,6 +19,8 @@ class Image(TableBase):
 
     resource = relationship("Resource", uselist=False)
 
+    albums = []
+
     def __repr__(self):
         return "<Image uuid=%s>" % (
             str(self.uuid))

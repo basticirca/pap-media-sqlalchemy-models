@@ -133,6 +133,26 @@ tag_playlist = Table(
     )
 )
 
+tag_album = Table(
+    "tag_album", TableBase.metadata,
+    Column(
+        "tag_uuid",
+        ForeignKey(
+            "tag.uuid", name="a",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    ),
+    Column(
+        "album_uuid",
+        ForeignKey(
+            "album.uuid", name="b",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    )
+)
+
 ###
 # tag
 ###
@@ -151,6 +171,30 @@ playlist_sound = Table(
         "sound_uuid",
         ForeignKey(
             "sound.uuid", name="b",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    )
+)
+
+###
+# album
+###
+
+album_image = Table(
+    "album_image", TableBase.metadata,
+    Column(
+        "album_uuid",
+        ForeignKey(
+            "album.uuid", name="a",
+            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+        ),
+        primary_key=True
+    ),
+    Column(
+        "image_uuid",
+        ForeignKey(
+            "image.uuid", name="b",
             onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
         ),
         primary_key=True
