@@ -16,7 +16,7 @@ class Playlist(TableBase):
 
     description = Column(String(512))
 
-    sounds = relationship("Sound", secondary=associations.tag_playlist, backref="playlists")
+    sounds = relationship("Sound", secondary=associations.playlist_sound, backref="playlists")
 
     # definition see tables.tag
     tags = []
