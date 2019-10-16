@@ -1,8 +1,10 @@
 ﻿from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.inspection import inspect as model_inspect
 from database.config import dev
 from datetime import datetime
+import uuid
 
 ##
 #  sqlalchemy database instance created based on uri
@@ -21,12 +23,23 @@ class _TableExt(object):
 	def __tablename__(cls):
 		return cls.__name__.lower()
 
-	def as_dict(self):
+	@staticmethod
+	def create_uuid():
+		return str(uuid.uuid4())
+
+	def as_dict(self, include_relationships=True):
 		""" Returns all object properties as dictionary. """
 		dict = {c.name: getattr(self, c.name) for c in self.__table__.columns}
 		for key in dict:
 			if isinstance(dict[key], datetime):
 				dict[key] = dict[key].isoformat()
+		if include_relationships:
+			for rel_name, relationship in model_inspect(self.__class__).relationships.items():
+				if not relationship.uselist:
+					dict[rel_name] = getattr(self, rel_name).as_dict(False)
+				else:
+					dict[rel_name] = [o.as_dict(False) for o in getattr(self, rel_name)]
+
 		return dict
 
 	def from_dict(self, d):
