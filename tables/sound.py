@@ -17,6 +17,8 @@ class Sound(TableBase):
         primary_key=True
     )
 
+    local_path = Column(String(256), nullable=True)
+
     resource = relationship("Resource", uselist=False)
 
     playlists = []

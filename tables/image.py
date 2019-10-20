@@ -19,13 +19,10 @@ class Image(TableBase):
 
     resource = relationship("Resource", uselist=False)
 
+    local_path = Column(String(256), nullable=True)
+
     albums = []
 
     def __repr__(self):
         return "<Image uuid=%s>" % (
             str(self.uuid))
-
-    def as_dict(self):
-        result = super().as_dict()
-        result["resource"] = self.resource.as_dict()
-        return result
