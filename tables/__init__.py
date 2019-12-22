@@ -7,3 +7,4 @@ from database.tables.project import Project
 from database.tables.tag import Tag
 from database.tables.playlist import Playlist
 from database.tables.album import Album
+from database.tables.world import World
