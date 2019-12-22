@@ -7,8 +7,8 @@ class WorldApi(Api):
     def __init__(self, bind):
         super().__init__(bind=bind)
         
-    def create_world(self, name, description):
-        obj = tables.World(uuid=tables.World.create_uuid(), name=name, description=description)
+    def create_world(self, name, description, image_uuid=None):
+        obj = tables.World(uuid=tables.World.create_uuid(), name=name, description=description, image_uuid=image_uuid)
         self.insert(obj)
         return obj
 
@@ -33,13 +33,7 @@ class WorldApi(Api):
         return success
 
     def set_image(self, world_uuid, image_uuid):
-        image = self.select(
-            tables.Image,
-            tables.Image.uuid == image_uuid
-        ).first()
-        if image is None:
-            return False
         world = self.get_world(world_uuid)
         if world is None:
             return False
-        world.image = image
+        world.image_uuid = image_uuid

@@ -17,6 +17,14 @@ class World(TableBase):
 
     description = Column(String(512), nullable=True)
 
+    image_uuid = Column(
+        String(64),
+        ForeignKey("image.uuid", onupdate=database.constants.CASCADE, ondelete=database.constants.SET_NULL),
+        nullable=True,
+        default=None,
+        server_default=None
+    )
+
     image = relationship("Image", uselist=False)
 
     def __repr__(self):

@@ -36,7 +36,10 @@ class _TableExt(object):
 		if include_relationships:
 			for rel_name, relationship in model_inspect(self.__class__).relationships.items():
 				if not relationship.uselist:
-					dict[rel_name] = getattr(self, rel_name).as_dict(False)
+					val = getattr(self, rel_name)
+					if val is not None:
+						val = val.as_dict(False)
+					dict[rel_name] = val
 				else:
 					dict[rel_name] = [o.as_dict(False) for o in getattr(self, rel_name)]
 
