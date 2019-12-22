@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 class World(TableBase):
 
-    __tablename__ = 'image'
+    __tablename__ = 'world'
 
     uuid = Column(String(64), primary_key=True)
 
