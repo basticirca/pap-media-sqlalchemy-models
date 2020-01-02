@@ -15,6 +15,15 @@ class WorldApi(Api):
     def get_world(self, uuid):
         return self.select(tables.World, tables.World.uuid == uuid).first()
 
+    def update_world(self, uuid, name, description, image_uuid=None):
+        world = self.get_world(uuid)
+        if world is None:
+            return False
+        world.name = name
+        world.description = description
+        world.image_uuid = image_uuid
+        return True
+
     def remove_world(self, uuid):
         world = self.get_world(uuid)
         if world is None:
