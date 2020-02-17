@@ -7,8 +7,10 @@ class PlaylistApi(Api):
     def __init__(self, bind):
         super().__init__(bind=bind)
         
-    def create_playlist(self, name, description):
+    def create_playlist(self, name, description, sound_uuids=[]):
         obj = tables.Playlist(uuid=tables.Playlist.create_uuid(), name=name, description=description)
+        if len(sound_uuids) > 0:
+            obj.sounds = self.select(tables.Sound, tables.Sound.uuid.in_(sound_uuids)).all()
         self.insert(obj)
         return obj
 
