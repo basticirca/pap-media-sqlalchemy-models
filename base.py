@@ -2,7 +2,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.inspection import inspect as model_inspect
-from database.config import dev
+from config import dev
 from datetime import datetime
 import uuid
 

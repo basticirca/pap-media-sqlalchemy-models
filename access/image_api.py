@@ -1,7 +1,7 @@
-from database.access.api import Api
+from access.api import Api
 
-from database import tables
-from database.tables.resource import ResourceType
+import tables
+from tables.resource import ResourceType
 
 
 class ImageApi(Api):

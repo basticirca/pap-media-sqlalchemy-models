@@ -1,6 +1,6 @@
-from database.access.api import Api
+from access.api import Api
 
-from database import tables
+import tables
 
 
 class ResourceApi(Api):

@@ -1,4 +1,4 @@
-﻿import database.base
+﻿import base
 from sqlalchemy import exc
 from sqlalchemy.orm import sessionmaker
 
@@ -28,7 +28,7 @@ class Api(object):
 
     def _clear(self):
         """ clears all tables """
-        for table in reversed(database.base.TableBase.metadata.sorted_tables):
+        for table in reversed(base.TableBase.metadata.sorted_tables):
             self._db.execute(table.delete())
         return self.commit()
 

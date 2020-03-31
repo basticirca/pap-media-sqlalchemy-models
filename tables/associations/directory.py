@@ -1,5 +1,5 @@
-import database.constants
-from database.base import TableBase
+import constants
+from base import TableBase
 
 from sqlalchemy import Column, Table
 from sqlalchemy import ForeignKey
@@ -10,7 +10,7 @@ directory_hierarchie = Table(
         "parent_uuid",
         ForeignKey(
             "directory.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -18,7 +18,7 @@ directory_hierarchie = Table(
         "child_uuid",
         ForeignKey(
             "directory.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )
@@ -30,7 +30,7 @@ directory_resource = Table(
         "directory_uuid",
         ForeignKey(
             "directory.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -38,7 +38,7 @@ directory_resource = Table(
         "resource_uuid",
         ForeignKey(
             "resource.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )

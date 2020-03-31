@@ -1,6 +1,6 @@
 """Image model"""
-from database.base import TableBase
-import database.constants
+from base import TableBase
+import constants
 
 from sqlalchemy import Column, String
 from sqlalchemy import ForeignKey
@@ -19,7 +19,7 @@ class World(TableBase):
 
     image_uuid = Column(
         String(64),
-        ForeignKey("image.uuid", onupdate=database.constants.CASCADE, ondelete=database.constants.SET_NULL),
+        ForeignKey("image.uuid", onupdate=constants.CASCADE, ondelete=constants.SET_NULL),
         nullable=True,
         default=None,
         server_default=None

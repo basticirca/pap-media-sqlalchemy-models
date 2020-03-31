@@ -1,5 +1,5 @@
-import database.constants
-from database.base import TableBase
+import constants
+from base import TableBase
 
 from sqlalchemy import Column, Table
 from sqlalchemy import ForeignKey
@@ -10,7 +10,7 @@ album_image = Table(
         "album_uuid",
         ForeignKey(
             "album.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -18,7 +18,7 @@ album_image = Table(
         "image_uuid",
         ForeignKey(
             "image.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )

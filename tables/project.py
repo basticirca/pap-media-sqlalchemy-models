@@ -1,5 +1,5 @@
 """Project model"""
-from database.base import TableBase
+from base import TableBase
 
 from sqlalchemy import Column, String, Text
 

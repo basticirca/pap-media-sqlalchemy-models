@@ -1,6 +1,6 @@
 """Tag model"""
-from database.base import TableBase
-from database.tables import associations
+from base import TableBase
+from tables import associations
 
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship

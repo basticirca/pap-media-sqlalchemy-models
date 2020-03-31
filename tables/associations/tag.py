@@ -1,5 +1,5 @@
-import database.constants
-from database.base import TableBase
+import constants
+from base import TableBase
 
 from sqlalchemy import Column, Table
 from sqlalchemy import ForeignKey
@@ -10,7 +10,7 @@ tag_resource = Table(
         "tag_uuid",
         ForeignKey(
             "tag.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -18,7 +18,7 @@ tag_resource = Table(
         "resource_uuid",
         ForeignKey(
             "resource.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )
@@ -30,7 +30,7 @@ tag_preset = Table(
         "tag_uuid",
         ForeignKey(
             "tag.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -38,7 +38,7 @@ tag_preset = Table(
         "preset_uuid",
         ForeignKey(
             "preset.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )
@@ -50,7 +50,7 @@ tag_project = Table(
         "tag_uuid",
         ForeignKey(
             "tag.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -58,7 +58,7 @@ tag_project = Table(
         "project_uuid",
         ForeignKey(
             "project.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )
@@ -70,7 +70,7 @@ tag_playlist = Table(
         "tag_uuid",
         ForeignKey(
             "tag.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -78,7 +78,7 @@ tag_playlist = Table(
         "playlist_uuid",
         ForeignKey(
             "playlist.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )
@@ -90,7 +90,7 @@ tag_album = Table(
         "tag_uuid",
         ForeignKey(
             "tag.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -98,7 +98,7 @@ tag_album = Table(
         "album_uuid",
         ForeignKey(
             "album.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )

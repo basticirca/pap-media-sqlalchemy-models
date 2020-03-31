@@ -1,5 +1,5 @@
-import database.constants
-from database.base import TableBase
+import constants
+from base import TableBase
 
 from sqlalchemy import Column, Table
 from sqlalchemy import ForeignKey
@@ -10,7 +10,7 @@ playlist_sound = Table(
         "playlist_uuid",
         ForeignKey(
             "playlist.uuid", name="a",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     ),
@@ -18,7 +18,7 @@ playlist_sound = Table(
         "sound_uuid",
         ForeignKey(
             "sound.uuid", name="b",
-            onupdate=database.constants.CASCADE, ondelete=database.constants.CASCADE
+            onupdate=constants.CASCADE, ondelete=constants.CASCADE
         ),
         primary_key=True
     )

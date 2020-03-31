@@ -1,5 +1,5 @@
 """Resource model"""
-from database.base import TableBase
+from base import TableBase
 from enum import IntEnum
 
 from sqlalchemy import Column, Integer, String, Enum
