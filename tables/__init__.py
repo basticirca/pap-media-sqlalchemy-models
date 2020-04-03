@@ -8,3 +8,4 @@ from tables.tag import Tag
 from tables.playlist import Playlist
 from tables.album import Album
 from tables.world import World
+from tables.user import User
