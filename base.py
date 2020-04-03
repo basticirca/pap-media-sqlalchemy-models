@@ -73,17 +73,17 @@ TableBase = declarative_base(cls=_TableExt)
 
 def create_database():
 	""" Creates the database from scratch. """
-	global TableBase
 	global engine
-	TableBase.metadata.create_all(engine)
+	import tables
+	tables.metadata.create_all(engine)
 
 
 def drop_database():
 	""" Drops all database contents.
 		ALL DATABASE TABLES/INDEXES AND DATA WILL BE LOST!"""
-	global TableBase
 	global engine
-	TableBase.metadata.drop_all(engine)
+	import tables
+	tables.metadata.drop_all(engine)
 
 
 def recreate_database():

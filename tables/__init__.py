@@ -9,3 +9,7 @@ from tables.playlist import Playlist
 from tables.album import Album
 from tables.world import World
 from tables.user import User
+
+import base
+
+metadata = base.TableBase.metadata
